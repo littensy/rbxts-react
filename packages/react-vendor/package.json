@@ -1,0 +1,12 @@
+{
+	"name": "@rbxts/react-vendor",
+	"version": "0.1.0",
+	"description": "Internal module for @rbxts/react",
+	"main": "init.lua",
+	"types": "types.d.ts",
+	"author": "littensy",
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	}
+}
