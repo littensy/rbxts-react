@@ -30,8 +30,8 @@ declare namespace React {
 	interface RefObject<T> {
 		readonly current: T | undefined;
 	}
-	// Bivariance hack for consistent unsoundness with RefObject
-	type RefCallback<T> = { bivarianceHack(instance: T | undefined): void }["bivarianceHack"];
+
+	type RefCallback<T> = (instance: T | undefined) => void;
 	type Ref<T> = RefCallback<T> | RefObject<T> | undefined;
 	type LegacyRef<T> = string | Ref<T>;
 	/**
