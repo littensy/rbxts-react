@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react-vendor",
-	"version": "0.1.0",
+	"version": "0.1.0-alpha",
 	"description": "Internal module for @rbxts/react",
 	"main": "init.lua",
 	"types": "types.d.ts",
