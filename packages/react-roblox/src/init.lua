@@ -1,1 +1,1 @@
-return require((script :: any).Parent:WaitForChild("ReactRoblox"))
+return require((script :: any).Parent:WaitForChild("ReactLua").ReactRoblox)
