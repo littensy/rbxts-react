@@ -5,3 +5,4 @@
 /include
 *.tsbuildinfo
 *.tgz
+.DS_Store

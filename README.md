@@ -54,15 +54,12 @@ node-linker=hoisted
 ### Mounting your app
 
 ```tsx
-import React from "@rbxts/react";
-import { createRoot } from "@rbxts/react-roblox";
+import React, { StrictMode } from "@rbxts/react";
+import { createPortal, createRoot } from "@rbxts/react-roblox";
 
-const root = createRoot(playerGui, {
-	// Enable hydration to avoid removing non-React instances
-	hydrate: true,
-});
+const root = createRoot(new Instance("Folder"));
 
-root.render(<App />);
+root.render(<StrictMode>{createPortal(<App />, playerGui)}</StrictMode>);
 ```
 
 ### Counter

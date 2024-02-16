@@ -1,6 +1,6 @@
 local script: any = script
 
-local React = require(script.Parent:WaitForChild("ReactLua").React)
+local React = require(script.Parent:WaitForChild("React"))
 local tags = require(script.tags)
 
 local exports = table.clone(React)
