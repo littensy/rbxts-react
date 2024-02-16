@@ -25,9 +25,7 @@ declare namespace React {
 	type ReactType<P = any> = ElementType<P>;
 	type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 
-	type JSXElementConstructor<P> =
-		| ((props: P) => ReactElement<any, any> | undefined)
-		| (new (props: P) => Component<any, any>);
+	type JSXElementConstructor<P> = ((props: P) => ReactElement<any, any>) | (new (props: P) => Component<any, any>);
 
 	interface RefObject<T> {
 		readonly current: T | undefined;
@@ -57,7 +55,7 @@ declare namespace React {
 		C extends
 			| ForwardRefExoticComponent<any>
 			| { new (props: any): Component<any> }
-			| ((props: any, context?: any) => ReactElement | undefined)
+			| ((props: any, context?: any) => ReactElement)
 			| keyof JSX.IntrinsicElements,
 	> =
 		// need to check first if `ref` is a valid prop for ts@3.0
@@ -427,7 +425,7 @@ declare namespace React {
 	type FC<P = {}> = FunctionComponent<P>;
 
 	interface FunctionComponent<P = {}> {
-		(props: PropsWithChildren<P>, context?: any): ReactElement<any, any> | undefined;
+		(props: PropsWithChildren<P>, context?: any): ReactElement<any, any>;
 		propTypes?: WeakValidationMap<P> | undefined;
 		contextTypes?: ValidationMap<any> | undefined;
 		defaultProps?: Partial<P> | undefined;
@@ -437,7 +435,7 @@ declare namespace React {
 	type VFC<P = {}> = VoidFunctionComponent<P>;
 
 	interface VoidFunctionComponent<P = {}> {
-		(props: P, context?: any): ReactElement<any, any> | undefined;
+		(props: P, context?: any): ReactElement<any, any>;
 		propTypes?: WeakValidationMap<P> | undefined;
 		contextTypes?: ValidationMap<any> | undefined;
 		defaultProps?: Partial<P> | undefined;
@@ -447,7 +445,7 @@ declare namespace React {
 	type ForwardedRef<T> = ((instance: T | undefined) => void) | MutableRefObject<T | undefined> | undefined;
 
 	interface ForwardRefRenderFunction<T, P = {}> {
-		(props: PropsWithChildren<P>, ref: ForwardedRef<T>): ReactElement | undefined;
+		(props: PropsWithChildren<P>, ref: ForwardedRef<T>): ReactElement;
 		displayName?: string | undefined;
 		// explicit rejected with `never` required due to
 		// https://github.com/microsoft/TypeScript/issues/36826
