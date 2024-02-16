@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-    <img width="150" height="150" src="images/logo.png" alt="Logo">
+    <img width="150" height="150" src="https://github.com/littensy/rbxts-react/blob/main/images/logo.png?raw=true" alt="Logo">
   </p>
   <h1 align="center"><b>@rbxts/react</b></h1>
   <p align="center">

@@ -1,5 +1,8 @@
 {
 	"name": "@rbxts/react",
+	"scripts": {
+		"prepublishOnly": "sh scripts/prepublish.sh"
+	},
 	"devDependencies": {
 		"@rbxts/compiler-types": "2.3.0-types.0",
 		"@rbxts/types": "^1.0.752",

@@ -2,8 +2,6 @@
 	"name": "@rbxts/react-roblox",
 	"version": "0.3.0-alpha",
 	"description": "React DOM bindings for Roblox",
-	"main": "src/init.lua",
-	"types": "src/index.d.ts",
 	"keywords": [
 		"roblox",
 		"typescript",
@@ -11,9 +9,22 @@
 	],
 	"author": "littensy",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/littensy/rbxts-react"
+	},
+	"bugs": {
+		"url": "https://github.com/littensy/rbxts-react/issues"
+	},
 	"publishConfig": {
 		"access": "public"
 	},
+	"main": "src/init.lua",
+	"types": "src/index.d.ts",
+	"files": [
+		"src",
+		"default.project.json"
+	],
 	"dependencies": {
 		"@rbxts/react": "workspace:*",
 		"@rbxts/react-vendor": "workspace:*"

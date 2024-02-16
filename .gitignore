@@ -1,6 +1,8 @@
 /.vscode
 /node_modules
 /packages/*/node_modules
+/packages/*/README.md
+/packages/*/LICENSE.md
 /out
 /include
 *.tsbuildinfo
