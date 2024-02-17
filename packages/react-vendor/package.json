@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react-vendor",
-	"version": "0.1.1",
+	"version": "0.3.1",
 	"description": "Internal module for @rbxts/react",
 	"author": "littensy",
 	"license": "MIT",
