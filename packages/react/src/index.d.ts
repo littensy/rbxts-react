@@ -310,6 +310,11 @@ declare namespace React {
 
 	type ReactInstance = Component<any> | Element;
 
+	/**
+	 * Decorator function that allows extending React Lua Components.
+	 */
+	export function ReactComponent<T extends ComponentClass<any, any>>(ctor: T): T;
+
 	// Base component for plain JS classes
 	interface Component<P = {}, S = {}, SS = any> extends ComponentLifecycle<P, S, SS> {}
 	class Component<P, S> {

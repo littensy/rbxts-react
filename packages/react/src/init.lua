@@ -5,6 +5,27 @@ local tags = require(script.tags)
 
 local exports = table.clone(React)
 
+function exports.Component.constructor() end
+
+function exports.ReactComponent(class)
+	local componentClass = exports.Component:extend(tostring(class))
+	setmetatable(class, nil)
+
+	for key, value in class do
+		-- need to use componentClass as __index
+		if key == "__index" then
+			continue
+		end
+		-- map constructor onto :init()
+		if key == "constructor" then
+			key = "init"
+		end
+		componentClass[key] = value
+	end
+
+	return componentClass
+end
+
 function exports.createElement(component, props, ...)
 	component = tags[component] or component
 

@@ -62,25 +62,103 @@ const root = createRoot(new Instance("Folder"));
 root.render(<StrictMode>{createPortal(<App />, playerGui)}</StrictMode>);
 ```
 
-### Counter
+### Function Component
 
 ```tsx
 import React, { useState } from "@rbxts/react";
 
-export function Counter() {
-  const [count, setCount] = useState(0);
+interface CounterProps {
+	initialCount: number;
+}
 
-  return (
-    <textbutton
-      Text={`Count: ${count}`}
-      AnchorPoint={new Vector2(0.5, 0.5)}
-      Size={new UDim2(0, 100, 0, 50)}
-      Position={new UDim2(0.5, 0, 0.5, 0)}
-      Event={{
-        Activated: () => setCount(count + 1),
-      }}
-    >
-  );
+export function Counter({ initialCount }: CounterProps) {
+	const [count, setCount] = useState(initialCount);
+
+	return (
+		<textbutton
+			Text={`Count: ${count}`}
+			AnchorPoint={new Vector2(0.5, 0.5)}
+			Size={new UDim2(0, 100, 0, 50)}
+			Position={new UDim2(0.5, 0, 0.5, 0)}
+			Event={{
+				Activated: () => setCount(count + 1),
+			}}
+		/>
+	);
+}
+```
+
+### Class Component
+
+```tsx
+import React, { Component, ReactComponent } from "@rbxts/react";
+
+interface CounterProps {
+	initialCount: number;
+}
+
+interface CounterState {
+	count: number;
+}
+
+@ReactComponent
+export class Counter extends Component<CounterProps, CounterState> {
+	state: CounterState = {
+		count: this.props.initialCount,
+	};
+
+	render() {
+		return (
+			<textbutton
+				Text={`Count: ${this.state.count}`}
+				AnchorPoint={new Vector2(0.5, 0.5)}
+				Size={new UDim2(0, 100, 0, 50)}
+				Position={new UDim2(0.5, 0, 0.5, 0)}
+				Event={{
+					Activated: () => this.setState({ count: this.state.count + 1 }),
+				}}
+			/>
+		);
+	}
+}
+```
+
+### Error Boundary
+
+```tsx
+import React, { Component, ErrorInfo, ReactComponent } from "@rbxts/react";
+
+interface ErrorBoundaryProps {
+	fallback: (error: unknown) => React.Element;
+}
+
+interface ErrorBoundaryState {
+	hasError: boolean;
+	message?: unknown;
+}
+
+@ReactComponent
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+	state: ErrorBoundaryState = {
+		hasError: false,
+	};
+
+	componentDidCatch(message: unknown, info: ErrorInfo) {
+		warn(message, info.componentStack);
+
+		this.setState({
+			hasError: true,
+			message: `${message} ${info.componentStack}`,
+		});
+	}
+
+	render() {
+		if (this.state.hasError) {
+			return this.props.fallback(this.state.message);
+		} else {
+			return this.props.children;
+		}
+	}
 }
 ```
 
