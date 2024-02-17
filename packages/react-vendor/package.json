@@ -2,6 +2,9 @@
 	"name": "@rbxts/react-vendor",
 	"version": "0.3.1",
 	"description": "Internal module for @rbxts/react",
+	"scripts": {
+		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
+	},
 	"author": "littensy",
 	"license": "MIT",
 	"repository": {
