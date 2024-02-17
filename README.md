@@ -4,13 +4,13 @@
   </p>
   <h1 align="center"><b>@rbxts/react</b></h1>
   <p align="center">
-    Typescript definitions for React Lua.
+    TypeScript type definitions for React Lua.
     <br />
     <a href="https://npmjs.com/package/@rbxts/react"><strong>npm package →</strong></a>
   </p>
 </p>
 
-Roblox-TS type definitions for [React Lua](https://github.com/jsdotlua/react-lua), sourced from the official React types. Currently, only [`@rbxts/react`](https://npmjs.com/package/@rbxts/react) and
+TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lua) and [roblox-ts](https://roblox-ts.com), sourced from the official React types. Currently, only [`@rbxts/react`](https://npmjs.com/package/@rbxts/react) and
 [`@rbxts/react-roblox`](https://npmjs.com/package/@rbxts/react-roblox) are available.
 
 If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/react-lua/issues/new) to let us know!
