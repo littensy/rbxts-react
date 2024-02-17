@@ -13,7 +13,7 @@
 TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lua) and [roblox-ts](https://roblox-ts.com), sourced from the official React types. Currently, only [`@rbxts/react`](https://npmjs.com/package/@rbxts/react) and
 [`@rbxts/react-roblox`](https://npmjs.com/package/@rbxts/react-roblox) are available.
 
-If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/react-lua/issues/new) to let us know!
+If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
 
 > [!IMPORTANT]
 > This package requires `roblox-ts@next` to use Generic JSX.
