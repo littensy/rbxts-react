@@ -16,18 +16,26 @@ TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lu
 If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
 
 > [!IMPORTANT]
-> This package requires `roblox-ts@next` to use Generic JSX.
+> This package is not compatible with `@rbxts/react-ts`. An unchecked installation of `@rbxts/react-ts` is a common cause of React errors, so make sure your dependencies are up-to-date.
 
 ## 📦 Setup
 
 ### Installation
 
-Install the `@rbxts/react` and `@rbxts/react-roblox` packages.
+Get started by adding React and ReactRoblox to your project:
 
 ```sh
 npm install @rbxts/react @rbxts/react-roblox
 yarn add @rbxts/react @rbxts/react-roblox
 pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
+```
+
+`roblox-ts` must also be installed with the `next` tag:
+
+```sh
+npm install -D roblox-ts@next
+yarn add -D roblox-ts@next
+pnpm add -D roblox-ts@next
 ```
 
 ### Configuration
