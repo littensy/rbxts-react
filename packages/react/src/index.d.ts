@@ -1,7 +1,5 @@
 import * as PropTypes from "./prop-types";
 
-type Booleanish = boolean | "true" | "false";
-
 declare const UNDEFINED_VOID_ONLY: unique symbol;
 // Destructors are only allowed to return void.
 type Destructor = () => void | { [UNDEFINED_VOID_ONLY]: never };
@@ -19,10 +17,6 @@ declare namespace React {
 				[K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never;
 		  }[keyof JSX.IntrinsicElements]
 		| ComponentType<P>;
-	/**
-	 * @deprecated Please use `ElementType`
-	 */
-	type ReactType<P = any> = ElementType<P>;
 	type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 
 	type JSXElementConstructor<P> = ((props: P) => ReactElement<any, any>) | (new (props: P) => Component<any, any>);
@@ -76,6 +70,7 @@ declare namespace React {
 	 */
 	interface Attributes {
 		key?: Key | undefined | undefined;
+		children?: ReactNode;
 	}
 	interface RefAttributes<T> extends Attributes {
 		ref?: Ref<T> | undefined;
@@ -100,11 +95,6 @@ declare namespace React {
 		P = Pick<ComponentProps<T>, Exclude<keyof ComponentProps<T>, "key" | "ref">>,
 	> extends ReactElement<P, Exclude<T, number>> {}
 
-	/**
-	 * @deprecated Please use `FunctionComponentElement`
-	 */
-	type SFCElement<P> = FunctionComponentElement<P>;
-
 	interface FunctionComponentElement<P> extends ReactElement<P, FunctionComponent<P>> {
 		ref?: ("ref" extends keyof P ? (P extends { ref?: infer R | undefined } ? R : never) : never) | undefined;
 	}
@@ -126,11 +116,6 @@ declare namespace React {
 
 	type Factory<P> = (props?: Attributes & P, ...children: ReactNode[]) => ReactElement<P>;
 
-	/**
-	 * @deprecated Please use `FunctionComponentFactory`
-	 */
-	type SFCFactory<P> = FunctionComponentFactory<P>;
-
 	type FunctionComponentFactory<P> = (props?: Attributes & P, ...children: ReactNode[]) => FunctionComponentElement<P>;
 
 	type ComponentFactory<P, T extends Component<P, ComponentState>> = (
@@ -145,15 +130,14 @@ declare namespace React {
 	// React Nodes
 	// ----------------------------------------------------------------------
 
-	type ReactText = string | number;
-	type ReactChild = ReactElement | ReactText;
+	type ReactChild = ReactElement;
 
-	/**
-	 * @deprecated Use either `ReactNode[]` if you need an array or `Iterable<ReactNode>` if its passed to a host component.
-	 */
-	interface ReactNodeArray extends ReadonlyArray<ReactNode> {}
-	type ReactFragment = {} | Iterable<ReactNode>;
-	type ReactNode = ReactChild | ReactFragment | ReactPortal | boolean | undefined | undefined;
+	type ReactFragment =
+		| Map<Key, ReactNode>
+		| ReadonlyMap<Key, ReactNode>
+		| { readonly [key: Key]: ReactNode }
+		| readonly ReactNode[];
+	type ReactNode = ReactChild | ReactFragment | ReactPortal | boolean | undefined;
 
 	//
 	// Top Level API
@@ -411,22 +395,6 @@ declare namespace React {
 	// Class Interfaces
 	// ----------------------------------------------------------------------
 
-	/**
-	 * @deprecated as of recent React versions, function components can no
-	 * longer be considered 'stateless'. Please use `FunctionComponent` instead.
-	 *
-	 * @see [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-	 */
-	type SFC<P = {}> = FunctionComponent<P>;
-
-	/**
-	 * @deprecated as of recent React versions, function components can no
-	 * longer be considered 'stateless'. Please use `FunctionComponent` instead.
-	 *
-	 * @see [React Hooks](https://reactjs.org/docs/hooks-intro.html)
-	 */
-	type StatelessComponent<P = {}> = FunctionComponent<P>;
-
 	type FC<P = {}> = FunctionComponent<P>;
 
 	interface FunctionComponent<P = {}> {
@@ -463,12 +431,6 @@ declare namespace React {
 		 */
 		propTypes?: never | undefined;
 	}
-
-	/**
-	 * @deprecated Use ForwardRefRenderFunction. forwardRef doesn't accept a
-	 *             "real" component.
-	 */
-	interface RefForwardingComponent<T, P = {}> extends ForwardRefRenderFunction<T, P> {}
 
 	interface ComponentClass<P = {}, S = ComponentState> extends StaticLifecycle<P, S> {
 		new (props: P, context?: any): Component<P, S>;
@@ -1057,26 +1019,6 @@ declare namespace React {
 	// Props / DOM Attributes
 	// ----------------------------------------------------------------------
 
-	/**
-	 * @deprecated This was used to allow clients to pass `ref` and `key`
-	 * to `createElement`, which is no longer necessary due to intersection
-	 * types. If you need to declare a props object before passing it to
-	 * `createElement` or a factory, use `ClassAttributes<T>`:
-	 *
-	 * ```ts
-	 * var b: Button | null;
-	 * var props: ButtonProps & ClassAttributes<Button> = {
-	 *     ref: b => button = b, // ok!
-	 *     label: "I'm a Button"
-	 * };
-	 * ```
-	 */
-	interface Props<T> {
-		children?: ReactNode | undefined;
-		key?: Key | undefined;
-		ref?: LegacyRef<T> | undefined;
-	}
-
 	type AllowRefs<T> = T extends Instance ? Ref<T> : never;
 	type InferEnumNames<T> = T extends EnumItem ? T["Name"] : never;
 
@@ -1169,19 +1111,6 @@ declare namespace React {
 		componentStack: string;
 	}
 
-	namespace JSX {
-		interface Element extends GlobalJSXElement {}
-		interface ElementClass extends GlobalJSXElementClass {}
-		interface ElementAttributesProperty extends GlobalJSXElementAttributesProperty {}
-		interface ElementChildrenAttribute extends GlobalJSXElementChildrenAttribute {}
-
-		type LibraryManagedAttributes<C, P> = GlobalJSXLibraryManagedAttributes<C, P>;
-
-		interface IntrinsicAttributes extends GlobalJSXIntrinsicAttributes {}
-		interface IntrinsicClassAttributes<T> extends GlobalJSXIntrinsicClassAttributes<T> {}
-		interface IntrinsicElements extends GlobalJSXIntrinsicElements {}
-	}
-
 	//
 	// Miscellaneous
 	// ----------------------------------------------------------------------
@@ -1240,9 +1169,6 @@ type ReactManagedAttributes<C, P> = C extends { propTypes: infer T; defaultProps
 			: P;
 
 declare global {
-	/**
-	 * @deprecated Use `React.JSX` instead of the global `JSX` namespace.
-	 */
 	namespace JSX {
 		interface Element extends React.ReactElement<any, any> {}
 		interface ElementClass extends React.Component<any> {
@@ -1541,18 +1467,3 @@ declare global {
 		}
 	}
 }
-
-// React.JSX needs to point to global.JSX to keep global module augmentations intact.
-// But we can't access global.JSX so we need to create these aliases instead.
-// Once the global JSX namespace will be removed we replace React.JSX with the contents of global.JSX
-interface GlobalJSXElement extends JSX.Element {}
-interface GlobalJSXElementClass extends JSX.ElementClass {}
-interface GlobalJSXElementAttributesProperty extends JSX.ElementAttributesProperty {}
-interface GlobalJSXElementChildrenAttribute extends JSX.ElementChildrenAttribute {}
-
-type GlobalJSXLibraryManagedAttributes<C, P> = JSX.LibraryManagedAttributes<C, P>;
-
-interface GlobalJSXIntrinsicAttributes extends JSX.IntrinsicAttributes {}
-interface GlobalJSXIntrinsicClassAttributes<T> extends JSX.IntrinsicClassAttributes<T> {}
-
-interface GlobalJSXIntrinsicElements extends JSX.IntrinsicElements {}
