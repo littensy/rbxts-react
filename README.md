@@ -16,9 +16,8 @@ TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lu
 If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
 
 > [!IMPORTANT]
-> This package uses unreleased roblox-ts features and requires `roblox-ts@next` to be installed.
->
-> If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#🔎-troubleshooting) section for more information.
+> This package uses unreleased roblox-ts features, and requires `roblox-ts@next` to be installed.
+> If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#-troubleshooting) section for more information.
 
 ## 📦 Setup
 
@@ -219,7 +218,7 @@ When multiple versions of React are present in your node_modules, any packages t
 
 Make sure your `rbxts_include.node_module.@rbxts` folder in Roblox Studio doesn't contain a module named "React" (capital R). This module is a sign Rojo has not fully removed react-ts. If so, you should delete your `node_modules` folder and restart Rojo.
 
-If a fresh install doesn't fix the issue, you might have a package installed that depends on react-ts. See [the previous section](#componentname-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not-a-valid-jsx-element) for more information.
+If a fresh install doesn't fix the issue, you might have a package installed that depends on react-ts. See [the previous section](#x-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not-a-valid-jsx-element) for more information.
 
 ### My issue isn't listed here!
 
