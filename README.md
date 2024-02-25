@@ -16,7 +16,9 @@ TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lu
 If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
 
 > [!IMPORTANT]
-> This package is not compatible with `@rbxts/react-ts`. An unchecked installation of `@rbxts/react-ts` is a common cause of React errors, so make sure your dependencies are up-to-date.
+> This package uses unreleased roblox-ts features and requires `roblox-ts@next` to be installed.
+>
+> If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#🔎-troubleshooting) section for more information.
 
 ## 📦 Setup
 
@@ -169,6 +171,59 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 	}
 }
 ```
+
+## 🔎 Troubleshooting
+
+### compilerOptions.jsxFactory must be `Roact.createElement`!
+
+If you encounter this error during compilation, it means that you're using an older version of `roblox-ts`. Make sure to install `roblox-ts@next` and uninstall any global installations of `roblox-ts`:
+
+```sh
+npm uninstall -g roblox-ts
+npm install -D roblox-ts@next
+```
+
+### `(X)` cannot be used as a JSX component. Its return type `Element` is not a valid JSX element.
+
+This error occurs when a conflicting installation of react-ts is present in your project. This can be for one of two reasons:
+
+1. You have react-ts installed in your dependencies. (`npm uninstall @rbxts/roact`)
+2. You have an outdated package installed that depends on react-ts.
+
+The most common cause is an outdated package. To view the packages that depend on `@rbxts/react-ts` (which will be under the alias `@rbxts/roact`), run the following command:
+
+```sh
+npm ls @rbxts/roact
+```
+
+If you find any packages that depend on `@rbxts/react-ts`, you should update them to the latest version, or open an issue on their repository to request an update.
+
+### Attempt to index nil with `useMemo` (or other hooks)
+
+This error happens when React can't figure out how to retrieve the current instance of the component. This can be for a number of reasons:
+
+1. You're using a hook outside of a component, or using function components incorrectly.
+
+Hooks must be used inside the body of a function component. A common mistake is to call hooks conditionally, or inside a callback function. Make sure you're calling hooks at the top level of your function component.
+
+**Do not call a function component directly.** To render a function component, wrap it in a JSX tag:
+
+```tsx
+<App />; // 🟢 Good
+App(); // 🔴 Bad
+```
+
+2. There's more than one version of React in your project.
+
+When multiple versions of React are present in your node_modules, any packages that depend on React might try to use the wrong one.
+
+Make sure your `rbxts_include.node_module.@rbxts` folder in Roblox Studio doesn't contain a module named "React" (capital R). This module is a sign Rojo has not fully removed react-ts. If so, you should delete your `node_modules` folder and restart Rojo.
+
+If a fresh install doesn't fix the issue, you might have a package installed that depends on react-ts. See [the previous section](#componentname-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not-a-valid-jsx-element) for more information.
+
+### My issue isn't listed here!
+
+If you're encountering an issue that isn't listed here, please [post your issue](https://discord.com/channels/476080952636997633/1006309509876162570) in the [roblox-ts Discord server](https://discord.roblox-ts.com/).
 
 ## 📚 Resources
 
