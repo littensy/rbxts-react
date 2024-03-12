@@ -29,7 +29,7 @@ end
 function exports.createElement(component, props, ...)
 	component = tags[component] or component
 
-	if props then
+	if props and type(component) == "string" then
 		if props.Change then
 			for key, value in props.Change do
 				props[React.Change[key]] = value
