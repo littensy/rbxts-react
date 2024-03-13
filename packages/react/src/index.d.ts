@@ -1091,14 +1091,14 @@ declare namespace React {
 	// ----------------------------------------------------------------------
 
 	interface ReactChildren {
-		map<T, C>(
+		map: <T, C>(
 			children: C | readonly C[],
 			fn: (child: C, index: number) => T,
-		): C extends undefined | undefined ? C : Array<Exclude<T, boolean | undefined | undefined>>;
-		forEach<C>(children: C | readonly C[], fn: (child: C, index: number) => void): void;
-		count(children: any): number;
-		only<C>(children: C): C extends any[] ? never : C;
-		toArray(children: ReactNode | ReactNode[]): Array<Exclude<ReactNode, boolean | undefined | undefined>>;
+		) => C extends undefined | undefined ? C : Array<Exclude<T, boolean | undefined | undefined>>;
+		forEach: <C>(children: C | readonly C[], fn: (child: C, index: number) => void) => void;
+		count: (children: any) => number;
+		only: <C>(children: C) => C extends any[] ? never : C;
+		toArray: (children: ReactNode | ReactNode[]) => Array<Exclude<ReactNode, boolean | undefined | undefined>>;
 	}
 
 	//
