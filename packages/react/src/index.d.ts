@@ -19,7 +19,7 @@ declare namespace React {
 		| ComponentType<P>;
 	type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 
-	type JSXElementConstructor<P> = ((props: P) => ReactElement<any, any>) | (new (props: P) => Component<any, any>);
+	type JSXElementConstructor<P> = ((props: P) => ReactNode) | (new (props: P) => Component<any, any>);
 
 	interface RefObject<T> {
 		readonly current: T | undefined;
@@ -398,7 +398,7 @@ declare namespace React {
 	type FC<P = {}> = FunctionComponent<P>;
 
 	interface FunctionComponent<P = {}> {
-		(props: PropsWithChildren<P>, context?: any): ReactElement<any, any>;
+		(props: P, context?: any): ReactNode;
 		propTypes?: WeakValidationMap<P> | undefined;
 		contextTypes?: ValidationMap<any> | undefined;
 		defaultProps?: Partial<P> | undefined;
@@ -408,7 +408,7 @@ declare namespace React {
 	type VFC<P = {}> = VoidFunctionComponent<P>;
 
 	interface VoidFunctionComponent<P = {}> {
-		(props: P, context?: any): ReactElement<any, any>;
+		(props: P, context?: any): ReactNode;
 		propTypes?: WeakValidationMap<P> | undefined;
 		contextTypes?: ValidationMap<any> | undefined;
 		defaultProps?: Partial<P> | undefined;
@@ -1170,6 +1170,7 @@ type ReactManagedAttributes<C, P> = C extends { propTypes: infer T; defaultProps
 
 declare global {
 	namespace JSX {
+		type ElementType = string | React.JSXElementConstructor<any>;
 		interface Element extends React.ReactElement<any, any> {}
 		interface ElementClass extends React.Component<any> {
 			render(): React.ReactNode;
