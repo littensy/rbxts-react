@@ -1,4 +1,4 @@
-import React from "@rbxts/react";
+import { ReactNode, ReactPortal } from "@rbxts/react";
 
 export as namespace ReactRoblox;
 export = ReactRoblox;
@@ -14,7 +14,7 @@ declare namespace ReactRoblox {
 	}
 
 	interface Root {
-		render(children: React.Element): void;
+		render(children: ReactNode): void;
 		unmount(): void;
 	}
 
@@ -34,7 +34,7 @@ declare namespace ReactRoblox {
 	 * @param key A unique string or number to be used as the portal’s [key](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key).
 	 * @returns A React element that can be included into JSX or returned from a React component.
 	 */
-	function createPortal(children: React.Element, container: Instance, key?: string): React.Element;
+	function createPortal(children: ReactNode, container: Instance, key?: string): ReactPortal;
 
 	/**
 	 * Wrap any code rendering and triggering updates to your components into `act()` calls.
