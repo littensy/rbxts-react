@@ -12,8 +12,8 @@ importers:
         specifier: 2.3.0-types.0
         version: 2.3.0-types.0
       '@rbxts/types':
-        specifier: ^1.0.752
-        version: 1.0.752
+        specifier: ^1.0.766
+        version: 1.0.766
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.1
         version: 7.0.1(@typescript-eslint/parser@7.0.1)(eslint@8.56.0)(typescript@5.3.3)
@@ -153,8 +153,8 @@ packages:
     resolution: {integrity: sha512-2kllUXLlK22OzSi3GmLT+/O70U9oB2iXp4rGFk5FLwc1pqf4W9EsInuJ0t7poLE2XnqnpW/ojff9CUNivI2+lw==}
     dev: true
 
-  /@rbxts/types@1.0.752:
-    resolution: {integrity: sha512-YM1THczAFyfVDETMKcOiRTQ+6/e8oLvjueGvDwUjGlSAydS7HbX36VNdxCnqpsF7BN57kR4wiumlGe2fToxa5A==}
+  /@rbxts/types@1.0.766:
+    resolution: {integrity: sha512-oIeN6iVDOpCyY3U0rOWPPVdkQtidRJKkhYb1+y0IQ8J2cURRnRMDbDNGSkKyul59J4rpJIopaBCj+oaQbCED8Q==}
     dev: true
 
   /@roblox-ts/luau-ast@1.0.11:
