@@ -1016,6 +1016,12 @@ declare namespace React {
 	): Binding<Map<string | number, Binding<T>>>;
 
 	//
+	// Roblox Symbols
+	// ----------------------------------------------------------------------
+
+	export const None: unique symbol;
+
+	//
 	// Props / DOM Attributes
 	// ----------------------------------------------------------------------
 
