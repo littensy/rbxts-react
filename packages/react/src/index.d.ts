@@ -69,7 +69,7 @@ declare namespace React {
 	 * inside your component or have to validate them.
 	 */
 	interface Attributes {
-		key?: Key | undefined | undefined;
+		key?: Key | undefined;
 		children?: ReactNode;
 	}
 	interface RefAttributes<T> extends Attributes {
@@ -116,8 +116,6 @@ declare namespace React {
 
 	type Factory<P> = (props?: Attributes & P, ...children: ReactNode[]) => ReactElement<P>;
 
-	type FunctionComponentFactory<P> = (props?: Attributes & P, ...children: ReactNode[]) => FunctionComponentElement<P>;
-
 	type ComponentFactory<P, T extends Component<P, ComponentState>> = (
 		props?: ClassAttributes<T> & P,
 		...children: ReactNode[]
@@ -142,16 +140,6 @@ declare namespace React {
 	//
 	// Top Level API
 	// ----------------------------------------------------------------------
-
-	// Custom components
-	function createFactory<P>(type: FunctionComponent<P>): FunctionComponentFactory<P>;
-	function createFactory<P>(
-		type: ClassType<P, ClassicComponent<P, ComponentState>, ClassicComponentClass<P>>,
-	): CFactory<P, ClassicComponent<P, ComponentState>>;
-	function createFactory<P, T extends Component<P, ComponentState>, C extends ComponentClass<P>>(
-		type: ClassType<P, T, C>,
-	): CFactory<P, T>;
-	function createFactory<P>(type: ComponentClass<P>): Factory<P>;
 
 	// Custom components
 
@@ -246,7 +234,7 @@ declare namespace React {
 		defaultValue: T,
 	): Context<T>;
 
-	function isValidElement<P>(object: {} | undefined | undefined): object is ReactElement<P>;
+	function isValidElement<P>(object: {} | undefined): object is ReactElement<P>;
 
 	const Children: ReactChildren;
 	const Fragment: ExoticComponent<{ children?: ReactNode | undefined }>;
@@ -266,7 +254,6 @@ declare namespace React {
 	 * Suspense support will be added in a later release.
 	 */
 	const Suspense: ExoticComponent<SuspenseProps>;
-	const version: string;
 
 	/**
 	 * {@link https://react.dev/reference/react/Profiler#onrender-callback Profiler API}}
@@ -1061,9 +1048,9 @@ declare namespace React {
 
 	type WeakValidationMap<T> = {
 		[K in keyof T]?: undefined extends T[K]
-			? Validator<T[K] | undefined | undefined>
+			? Validator<T[K] | undefined>
 			: undefined extends T[K]
-				? Validator<T[K] | undefined | undefined>
+				? Validator<T[K] | undefined>
 				: Validator<T[K]>;
 	};
 
