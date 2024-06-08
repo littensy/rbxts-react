@@ -5,7 +5,7 @@ declare const UNDEFINED_VOID_ONLY: unique symbol;
 type Destructor = () => void | { [UNDEFINED_VOID_ONLY]: never };
 
 type InferNone<T> = T extends undefined ? typeof React.None : T;
-type MapToNone<T> = { [K in keyof T]: InferNone<T[K]> };
+type MapToNone<T> = { [K in keyof T]-?: InferNone<T[K]> };
 
 export = React;
 export as namespace React;
