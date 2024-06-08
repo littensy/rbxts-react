@@ -18,6 +18,8 @@ declare namespace ReactRoblox {
 		unmount(): void;
 	}
 
+	const version: string;
+
 	function createRoot(container: Instance, options?: RootOptions): Root;
 
 	function createBlockingRoot(container: Instance, options?: RootOptions): Root;
