@@ -4,6 +4,9 @@ declare const UNDEFINED_VOID_ONLY: unique symbol;
 // Destructors are only allowed to return void.
 type Destructor = () => void | { [UNDEFINED_VOID_ONLY]: never };
 
+type InferNone<T> = T extends undefined ? typeof React.None : T;
+type MapToNone<T> = { [K in keyof T]-?: InferNone<T[K]> };
+
 export = React;
 export as namespace React;
 
@@ -343,12 +346,14 @@ declare namespace React {
 		constructor(props: P, context: any);
 
 		// We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
+		// Setting a field in the state to `React.None` will clear it from the state. This is the only way to remove a field
+		// from a component's state!
 		// See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18365#issuecomment-351013257
 		// Also, the ` | S` allows intellisense to not be dumbisense
 		setState<K extends keyof S>(
 			state:
-				| ((prevState: Readonly<S>, props: Readonly<P>) => Pick<S, K> | S | undefined)
-				| (Pick<S, K> | S | undefined),
+				| ((prevState: Readonly<S>, props: Readonly<P>) => Pick<MapToNone<S>, K> | S | undefined)
+				| (Pick<MapToNone<S>, K> | S | undefined),
 			callback?: () => void,
 		): void;
 
@@ -1006,6 +1011,12 @@ declare namespace React {
 	export function joinBindings<T>(
 		bindings: ReadonlyMap<string | number, Binding<T>>,
 	): Binding<Map<string | number, Binding<T>>>;
+
+	//
+	// Roblox Symbols
+	// ----------------------------------------------------------------------
+
+	export const None: unique symbol;
 
 	//
 	// Props / DOM Attributes
