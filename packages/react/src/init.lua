@@ -26,6 +26,27 @@ function exports.ReactComponent(class)
 	return componentClass
 end
 
+function exports.PureComponent.constructor() end
+
+function exports.ReactPureComponent(class)
+	local componentClass = exports.PureComponent:extend(tostring(class))
+	setmetatable(class, nil)
+
+	for key, value in class do
+		-- need to use componentClass as __index
+		if key == "__index" then
+			continue
+		end
+		-- map constructor onto :init()
+		if key == "constructor" then
+			key = "init"
+		end
+		componentClass[key] = value
+	end
+
+	return componentClass
+end
+
 function exports.createElement(component, props, ...)
 	component = tags[component] or component
 
