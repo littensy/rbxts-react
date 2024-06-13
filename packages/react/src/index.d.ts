@@ -76,7 +76,9 @@ declare namespace React {
 	 *
 	 * @template P The props the component accepts.
 	 */
-	type JSXElementConstructor<P> = ((props: P) => ReactNode) | (new (props: P) => Component<any, any>);
+	type JSXElementConstructor<P> =
+		| ((props: P, context?: any) => ReactNode)
+		| (new (props: P, context?: any) => Component<any, any>);
 
 	/**
 	 * A readonly ref container where {@link current} cannot be mutated.
