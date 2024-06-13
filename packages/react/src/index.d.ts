@@ -114,20 +114,6 @@ declare namespace React {
 	}
 
 	//
-	// Factories
-	// ----------------------------------------------------------------------
-
-	type Factory<P> = (props?: Attributes & P, ...children: ReactNode[]) => ReactElement<P>;
-
-	type ComponentFactory<P, T extends Component<P, ComponentState>> = (
-		props?: ClassAttributes<T> & P,
-		...children: ReactNode[]
-	) => CElement<P, T>;
-
-	type CFactory<P, T extends Component<P, ComponentState>> = ComponentFactory<P, T>;
-	type ClassicFactory<P> = CFactory<P, ClassicComponent<P, ComponentState>>;
-
-	//
 	// React Nodes
 	// ----------------------------------------------------------------------
 
