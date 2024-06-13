@@ -29,7 +29,7 @@ declare namespace React {
 	 * @example
 	 *
 	 * ```tsx
-	 * // All components and tags (frame, screengui etc.)
+	 * // All components and tags (imagelabel, imagebutton etc.)
 	 * // which accept `Image`
 	 * type ImageComponents = ElementType<{ Image: string }>;
 	 * ```
