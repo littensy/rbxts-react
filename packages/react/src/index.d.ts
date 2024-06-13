@@ -645,6 +645,8 @@ declare namespace React {
 		baseDuration: number,
 		/**
 		 * A numeric timestamp for when React began rendering the current update.
+		 *
+		 * @see {@link https://react.dev/reference/react/Profiler#onrender-callback React Docs}
 		 */
 		startTime: number,
 		/**
