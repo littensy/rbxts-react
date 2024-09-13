@@ -31,13 +31,7 @@ yarn add @rbxts/react @rbxts/react-roblox
 pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
 ```
 
-`roblox-ts` must also be installed with the `next` tag:
-
-```sh
-npm install -D roblox-ts@next
-yarn add -D roblox-ts@next
-pnpm add -D roblox-ts@next
-```
+`roblox-ts` must be 3.0.0 or above!
 
 ### Configuration
 
