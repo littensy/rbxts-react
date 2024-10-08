@@ -21,7 +21,7 @@
 	"types": "types.d.ts",
 	"files": [
 		"default.project.json",
-		"react-lua.rbxm",
+		"react-lua.rbxmx",
 		"types.d.ts"
 	]
 }
