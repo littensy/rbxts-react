@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react",
-	"version": "17.2.0",
+	"version": "17.2.1",
 	"description": "React bindings for Roblox",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
