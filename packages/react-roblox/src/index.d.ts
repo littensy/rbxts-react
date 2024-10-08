@@ -20,6 +20,11 @@ declare namespace ReactRoblox {
 
 	const version: string;
 
+	/**
+	 * createRoot lets you create a root to display React components inside a Roblox instance.
+	 *
+	 * @see {@link https://react.dev/reference/react-dom/client/createRoot API Reference for `createRoot`}
+	 */
 	function createRoot(container: Instance, options?: RootOptions): Root;
 
 	function createBlockingRoot(container: Instance, options?: RootOptions): Root;
