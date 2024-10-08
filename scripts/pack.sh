@@ -5,5 +5,5 @@ for package in packages/*; do
 done
 
 for tarball in packages/*/*.tgz; do
-	echo "npm add $(realpath $tarball)"
+	echo "pnpm add $(realpath $tarball)"
 done
