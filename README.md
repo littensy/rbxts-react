@@ -11,19 +11,21 @@
 </p>
 
 TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lua) and [roblox-ts](https://roblox-ts.com), sourced from the official React types. Currently, only [`@rbxts/react`](https://npmjs.com/package/@rbxts/react) and
-[`@rbxts/react-roblox`](https://npmjs.com/package/@rbxts/react-roblox) are available.
+[`@rbxts/react-roblox`](https://npmjs.com/package/@rbxts/react-roblox) may be installed.
 
 If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
 
+If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#-troubleshooting) section for more information.
+
 > [!IMPORTANT]
-> This package uses unreleased roblox-ts features, and requires `roblox-ts@next` to be installed.
-> If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#-troubleshooting) section for more information.
+> This package requires roblox-ts version 3.0 or later.
+> If you're using an older version of roblox-ts, you'll need to update to the latest version.
 
 ## 📦 Setup
 
 ### Installation
 
-Get started by adding React and ReactRoblox to your project:
+Get started by installing `@rbxts/react` and `@rbxts/react-roblox`:
 
 ```sh
 npm install @rbxts/react @rbxts/react-roblox
@@ -31,17 +33,9 @@ yarn add @rbxts/react @rbxts/react-roblox
 pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
 ```
 
-`roblox-ts` must also be installed with the `next` tag:
-
-```sh
-npm install -D roblox-ts@next
-yarn add -D roblox-ts@next
-pnpm add -D roblox-ts@next
-```
-
 ### Configuration
 
-Set up your `tsconfig.json` to use the React JSX factory.
+Set up your `tsconfig.json` JSX options to use React's `createElement` and `Fragment`:
 
 ```json
 "compilerOptions": {
@@ -175,16 +169,27 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
 ### compilerOptions.jsxFactory must be `Roact.createElement`!
 
-If you encounter this error during compilation, it means that you're using an older version of `roblox-ts`. Make sure to install `roblox-ts@next` and uninstall any global installations of `roblox-ts`:
+If you encounter this error during compilation, it means that you're using an older version of `roblox-ts`. Make sure to install the latest version of `roblox-ts` and remove any global installations:
 
 ```sh
 npm uninstall -g roblox-ts
-npm install -D roblox-ts@next
+npm install -D roblox-ts@latest
+```
+
+### `nil` cannot be used as a JSX component.
+
+This error typically occurs when `tsconfig.json` has not been configured correctly. Make sure that your fragment factory is set to `React.Fragment`, and that your JSX factory is set to `React.createElement`:
+
+```json
+"compilerOptions": {
+  "jsxFactory": "React.createElement",
+  "jsxFragmentFactory": "React.Fragment"
+}
 ```
 
 ### `(X)` cannot be used as a JSX component. Its return type `Element` is not a valid JSX element.
 
-This error occurs when a conflicting installation of react-ts is present in your project. This can be for one of two reasons:
+This error can occur when a conflicting installation of react-ts is present in your project. This can be for one of two reasons:
 
 1. You have react-ts installed in your dependencies. (`npm uninstall @rbxts/roact`)
 2. You have an outdated package installed that depends on react-ts.
@@ -199,7 +204,7 @@ If you find any packages that depend on `@rbxts/react-ts`, you should update the
 
 ### Attempt to index nil with `useMemo` (or other hooks)
 
-This error happens when React can't figure out how to retrieve the current instance of the component. This can be for a number of reasons:
+This error happens when a hook was called in an invalid environment. There are two common reasons for this error:
 
 1. You're using a hook outside of a component, or using function components incorrectly.
 
@@ -214,11 +219,9 @@ App(); // 🔴 Bad
 
 2. There's more than one version of React in your project.
 
-When multiple versions of React are present in your node_modules, any packages that depend on React might try to use the wrong one.
+When multiple versions of React are present in your node_modules, your packages might import hooks from the wrong version of React. Update your packages to the latest version that supports `@rbxts/react`, or remove the conflicting packages.
 
-Make sure your `rbxts_include.node_module.@rbxts` folder in Roblox Studio doesn't contain a module named "React" (capital R). This module is a sign Rojo has not fully removed react-ts. If so, you should delete your `node_modules` folder and restart Rojo.
-
-If a fresh install doesn't fix the issue, you might have a package installed that depends on react-ts. See [the previous section](#x-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not-a-valid-jsx-element) for more information.
+If you have no conflicting dependencies, or a fresh install doesn't remove the outdated package, see [the previous section](#x-cannot-be-used-as-a-jsx-component-its-return-type-element-is-not-a-valid-jsx-element) for more information.
 
 ### My issue isn't listed here!
 
