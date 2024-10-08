@@ -755,8 +755,8 @@ declare namespace React {
 		// Also, the ` | S` allows intellisense to not be dumbisense
 		setState<K extends keyof S>(
 			state:
-				| ((prevState: Readonly<S>, props: Readonly<P>) => Pick<MapToNone<S>, K> | S | undefined)
-				| (Pick<MapToNone<S>, K> | S | undefined),
+				| ((prevState: Readonly<S>, props: Readonly<P>) => Pick<MapToNone<S>, K> | MapToNone<S> | undefined)
+				| (Pick<MapToNone<S>, K> | MapToNone<S> | undefined),
 			callback?: () => void,
 		): void;
 
@@ -1795,7 +1795,16 @@ declare namespace React {
 	// Roblox Symbols
 	// ----------------------------------------------------------------------
 
-	export const None: unique symbol;
+	export const None: {
+		/**
+		 * **DO NOT USE!**
+		 *
+		 * This field exists to force TypeScript to recognize this as a nominal type
+		 * @hidden
+		 * @deprecated
+		 */
+		readonly _nominal_ReactNone: unique symbol;
+	};
 
 	//
 	// Props / DOM Attributes
