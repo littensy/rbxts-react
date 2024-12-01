@@ -234,6 +234,7 @@ local classNames = {
 	"TrussPart",
 	"UIAspectRatioConstraint",
 	"UICorner",
+	"UIDragDetector",
 	"UIFlexItem",
 	"UIGradient",
 	"UIGridLayout",

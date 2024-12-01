@@ -2171,6 +2171,7 @@ declare global {
 			trusspart: React.InstanceProps<TrussPart>;
 			uiaspectratioconstraint: React.InstanceProps<UIAspectRatioConstraint>;
 			uicorner: React.InstanceProps<UICorner>;
+			uidragdetector: React.InstanceProps<UIDragDetector>;
 			uiflexitem: React.InstanceProps<UIFlexItem>;
 			uigradient: React.InstanceProps<UIGradient>;
 			uigridlayout: React.InstanceProps<UIGridLayout>;
