@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react-vendor",
-	"version": "17.2.1",
+	"version": "17.2.2",
 	"description": "Internal module for @rbxts/react",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
