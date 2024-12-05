@@ -49,7 +49,7 @@ Set up your `tsconfig.json` JSX options to use React's `createElement` and `Frag
 If you're using PNPM as your package manager, you'll need to create a `.npmrc` file in the root of your project with the following content:
 
 ```ini
-node-linker=hoisted
+public-hoist-pattern[]=*@rbxts*
 ```
 
 ## 🚀 Examples
