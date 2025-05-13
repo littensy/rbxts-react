@@ -1,6 +1,6 @@
 <p align="center">
   <p align="center">
-    <img width="150" height="150" src="https://github.com/littensy/rbxts-react/blob/main/images/logo.png?raw=true" alt="Logo">
+    <img width="150" height="150" src="https://github.com/rbxts-js/rbxts-react/blob/main/assets/logo.png?raw=true" alt="Logo">
   </p>
   <h1 align="center"><b>@rbxts/react</b></h1>
   <p align="center">
@@ -13,7 +13,7 @@
 TypeScript type definitions for [React Lua](https://github.com/jsdotlua/react-lua) and [roblox-ts](https://roblox-ts.com), sourced from the official React types. Currently, only [`@rbxts/react`](https://npmjs.com/package/@rbxts/react) and
 [`@rbxts/react-roblox`](https://npmjs.com/package/@rbxts/react-roblox) may be installed.
 
-If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/littensy/rbxts-react/issues/new) to let us know!
+If we're missing any deviations from [React Lua](https://jsdotlua.github.io/react-lua/), please [open an issue or pull request](https://github.com/rbxts-js/rbxts-react/issues/new) to let us know!
 
 If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#-troubleshooting) section for more information.
 

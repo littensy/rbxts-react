@@ -2,15 +2,15 @@
 	"name": "@rbxts/react",
 	"devDependencies": {
 		"@rbxts/compiler-types": "3.0.0-types.0",
-		"@rbxts/types": "^1.0.810",
+		"@rbxts/types": "^1.0.852",
 		"@typescript-eslint/eslint-plugin": "^7.18.0",
 		"@typescript-eslint/parser": "^7.18.0",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^9.1.0",
-		"eslint-plugin-prettier": "^5.2.1",
+		"eslint-plugin-prettier": "^5.4.0",
 		"eslint-plugin-roblox-ts": "^0.0.36",
-		"prettier": "^3.3.3",
-		"roblox-ts": "3.0.0",
-		"typescript": "^5.6.2"
+		"prettier": "^3.5.3",
+		"roblox-ts": "^3.0.0",
+		"typescript": "^5.8.3"
 	}
 }

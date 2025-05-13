@@ -14,10 +14,10 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/littensy/rbxts-react"
+		"url": "https://github.com/rbxts-js/rbxts-react"
 	},
 	"bugs": {
-		"url": "https://github.com/littensy/rbxts-react/issues"
+		"url": "https://github.com/rbxts-js/rbxts-react/issues"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -25,11 +25,10 @@
 	"main": "src/init.lua",
 	"types": "src/index.d.ts",
 	"files": [
-		"src",
-		"default.project.json"
+		"src"
 	],
 	"dependencies": {
 		"@rbxts/react": "workspace:*",
-		"@rbxts/react-vendor": "workspace:*"
+		"@rbxts-js/react-roblox": "*"
 	}
 }
