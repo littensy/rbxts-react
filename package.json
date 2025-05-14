@@ -1,5 +1,5 @@
 {
-	"name": "@rbxts/react",
+	"private": true,
 	"workspaces": [
 		"packages/*"
 	],
