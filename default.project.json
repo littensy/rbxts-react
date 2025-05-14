@@ -1,0 +1,12 @@
+{
+	"name": "rbxts-react",
+	"tree": {
+		"$className": "Folder",
+		"@rbxts": {
+			"$path": "packages"
+		},
+		"@rbxts-js": {
+			"$path": "node_modules/@rbxts-js"
+		}
+	}
+}

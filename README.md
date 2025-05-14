@@ -17,10 +17,6 @@ If we're missing any deviations from [React Lua](https://jsdotlua.github.io/reac
 
 If you're encountering issues with `@rbxts/react`, please see the [Troubleshooting](#-troubleshooting) section for more information.
 
-> [!IMPORTANT]
-> This package requires roblox-ts version 3.0 or later.
-> If you're using an older version of roblox-ts, you'll need to update to the latest version.
-
 ## 📦 Setup
 
 ### Installation
@@ -31,6 +27,20 @@ Get started by installing `@rbxts/react` and `@rbxts/react-roblox`:
 npm install @rbxts/react @rbxts/react-roblox
 yarn add @rbxts/react @rbxts/react-roblox
 pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
+```
+
+Then, add the following to your Rojo project file, under the `node_modules` folder:
+
+```json
+"node_modules": {
+  "$className": "Folder",
+  "@rbxts": {
+    "$path": "node_modules/@rbxts"
+  },
+  "@rbxts-js": {
+    "$path": "node_modules/@rbxts-js"
+  }
+}
 ```
 
 ### Configuration

@@ -1,1 +1,1 @@
-return require((script :: any).Parent.Parent.Parent:WaitForChild("@rbxts-js").ReactRoblox)
+return require(script.Parent.Parent:WaitForChild("@rbxts-js").ReactRoblox)

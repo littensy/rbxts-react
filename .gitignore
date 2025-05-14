@@ -8,3 +8,4 @@
 *.tsbuildinfo
 *.tgz
 .DS_Store
+sourcemap.json
