@@ -1,5 +1,6 @@
 {
 	"name": "rbxts-react",
+	"globIgnorePaths": ["packages/*/node_modules"],
 	"tree": {
 		"$className": "Folder",
 		"@rbxts": {
