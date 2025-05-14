@@ -1,7 +1,7 @@
-local React = require(script.Parent.Parent:WaitForChild("@rbxts-js").React)
+local React: { [string]: any } = require(script.Parent.Parent:WaitForChild("@rbxts-js").React)
 local tags = require(script.tags)
 
-local exports: { [string]: any } = table.clone(React)
+local exports = table.clone(React)
 
 function exports.Component.constructor() end
 

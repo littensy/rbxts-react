@@ -8,12 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@rbxts-js/react':
-        specifier: 17.1.20-ts.1
-        version: 17.1.20-ts.1
-      '@rbxts-js/react-roblox':
-        specifier: 17.1.20-ts.1
-        version: 17.1.20-ts.1
       '@rbxts/compiler-types':
         specifier: 3.0.0-types.0
         version: 3.0.0-types.0
