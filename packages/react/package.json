@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react",
-	"version": "17.3.0-alpha.1",
+	"version": "17.3.5-alpha.1",
 	"description": "React bindings for Roblox",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
@@ -26,6 +26,6 @@
 		"roblox-ts"
 	],
 	"dependencies": {
-		"@rbxts-js/react": "^17.1.20-ts.1"
+		"@rbxts-js/react": "^17.3.5-ts.1"
 	}
 }

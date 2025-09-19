@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react-roblox",
-	"version": "17.3.0-alpha.1",
+	"version": "17.3.5-alpha.1",
 	"description": "React DOM bindings for Roblox",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
@@ -26,7 +26,7 @@
 		"roblox-ts"
 	],
 	"dependencies": {
-		"@rbxts-js/react-roblox": "^17.1.20-ts.1"
+		"@rbxts-js/react-roblox": "^17.3.5-ts.1"
 	},
 	"peerDependencies": {
 		"@rbxts/react": "workspace:^"
