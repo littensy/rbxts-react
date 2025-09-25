@@ -21,12 +21,12 @@ If you're encountering issues with `@rbxts/react`, please see the [Troubleshooti
 
 ### Installation
 
-Get started by installing `@rbxts/react` and `@rbxts/react-roblox`:
+Get started by installing the alpha versions of `@rbxts/react` and `@rbxts/react-roblox`:
 
 ```sh
-npm install @rbxts/react @rbxts/react-roblox
-yarn add @rbxts/react @rbxts/react-roblox
-pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
+npm install @rbxts/react@alpha @rbxts/react-roblox@alpha
+yarn add @rbxts/react@alpha @rbxts/react-roblox@alpha
+pnpm add @rbxts/react@alpha @rbxts/react-roblox@alpha # 🔴 See below
 ```
 
 Then, add the following to your Rojo project file, under the `node_modules` folder:
