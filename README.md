@@ -62,6 +62,32 @@ If you're using PNPM as your package manager, you'll need to create a `.npmrc` f
 public-hoist-pattern[]=*@rbxts*
 ```
 
+### React DevTools
+
+To connect to DevTools from a new application, you need to import the backend portion of the stack. Add ReactDevtools and ReactGlobals as dependencies in your package manager:
+
+```sh
+npm install @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha
+yarn add @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha
+pnpm add @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha # 🔴 See above
+```
+
+Similar to when setting the `__DEV__` or `__PROFILE__` flags, DevTools must be initialized before React is imported.
+
+```ts
+import { backend } from "@rbxts/react-devtools-core";
+import ReactGlobals from "@rbxts/react-globals";
+
+// The DEV flag enables some DevTools features you otherwise wouldn't have
+ReactGlobals.__DEV__ = true;
+// The PROFILE flag allows you to run the DevTools profiler
+ReactGlobals.__PROFILE__ = true;
+
+backend.connectToDevtools();
+```
+
+Now, if you launch DevTools and then run your code, you should see your React component tree!
+
 ## 🚀 Examples
 
 ### Mounting your app
