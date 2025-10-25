@@ -1,7 +1,7 @@
 {
-	"name": "@rbxts/react",
+	"name": "@rbxts/react-globals",
 	"version": "17.3.7-alpha.1",
-	"description": "React bindings for Roblox",
+	"description": "Access React's global environment variables",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
 	},
@@ -26,6 +26,6 @@
 		"roblox-ts"
 	],
 	"dependencies": {
-		"@rbxts-js/react": "^17.3.7-ts.1"
+		"@rbxts-js/react-globals": "^17.3.7-ts.1"
 	}
 }
