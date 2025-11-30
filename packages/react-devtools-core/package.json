@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/react-devtools-core",
-	"version": "17.3.7-alpha.1",
+	"version": "17.3.7-ts.1",
 	"description": "React DevTools Core bindings for Roblox",
 	"scripts": {
 		"prepublishOnly": "cp ../../README.md . && cp ../../LICENSE.md ."
