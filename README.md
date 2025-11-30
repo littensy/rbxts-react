@@ -24,9 +24,9 @@ If you're encountering issues with `@rbxts/react`, please see the [Troubleshooti
 Get started by installing the alpha versions of `@rbxts/react` and `@rbxts/react-roblox`:
 
 ```sh
-npm install @rbxts/react@alpha @rbxts/react-roblox@alpha
-yarn add @rbxts/react@alpha @rbxts/react-roblox@alpha
-pnpm add @rbxts/react@alpha @rbxts/react-roblox@alpha # 🔴 See below
+npm install @rbxts/react @rbxts/react-roblox
+yarn add @rbxts/react @rbxts/react-roblox
+pnpm add @rbxts/react @rbxts/react-roblox # 🔴 See below
 ```
 
 Then, add the following to your Rojo project file, under the `node_modules` folder:
@@ -67,9 +67,9 @@ public-hoist-pattern[]=*@rbxts*
 To connect to DevTools from a new application, you need to import the backend portion of the stack. Add ReactDevtools and ReactGlobals as dependencies in your package manager:
 
 ```sh
-npm install @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha
-yarn add @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha
-pnpm add @rbxts/react-globals@alpha @rbxts/react-devtools-core@alpha # 🔴 See above
+npm install @rbxts/react-globals @rbxts/react-devtools-core
+yarn add @rbxts/react-globals @rbxts/react-devtools-core
+pnpm add @rbxts/react-globals @rbxts/react-devtools-core # 🔴 See above
 ```
 
 Similar to when setting the `__DEV__` or `__PROFILE__` flags, DevTools must be initialized before React is imported.
