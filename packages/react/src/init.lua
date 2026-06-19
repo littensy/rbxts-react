@@ -1,7 +1,7 @@
-local React: { [string]: any } = require(script.Parent.Parent:WaitForChild("@rbxts-js").React)
+local React = require(script.Parent.Parent:WaitForChild("@rbxts-js").React)
 local tags = require(script.tags)
 
-local exports = table.clone(React)
+local exports: { [string]: any } = table.clone(React)
 
 function exports.Component.constructor() end
 
@@ -45,7 +45,7 @@ function exports.ReactPureComponent(class: any)
 	return componentClass
 end
 
-function exports.createElement(component: string | (any) -> any, props: { [string]: any }, ...: any)
+function exports.createElement(component: string | (any) -> any, props: { [any]: any }, ...: any)
 	if type(component) == "string" then
 		component = tags[component] or component
 
@@ -74,4 +74,7 @@ function exports.createElement(component: string | (any) -> any, props: { [strin
 	return React.createElement(component, props, ...)
 end
 
-return exports
+return exports :: typeof(React) & {
+	ReactComponent: (class: any) -> any,
+	ReactPureComponent: (class: any) -> any,
+}
